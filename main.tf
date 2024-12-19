@@ -18,15 +18,6 @@ terraform {
 resource "aws_instance" "test-instance1" {
   ami           = "ami-0903ff18cc3c8e341"
   instance_type = "t2.micro"
-
-  metadata_options {
-    http_tokens = "required"
-  }
-
-  lifecycle {
-    ignore_changes = [
-    ]
-  }
   tags = {
     Name = "rafa-test-instance-${random_id.bucket_prefix.hex}"
   }

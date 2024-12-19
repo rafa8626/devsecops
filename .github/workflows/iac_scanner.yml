@@ -1,4 +1,4 @@
-name: IaC Security Scan Project 1
+name: IaC Security Scan (Trivi)
 
 on:
   push:
@@ -7,34 +7,24 @@ on:
 
 jobs:
   deploy-and-scan:
-    name: Run IaC Security Scan
-
+    name: Run IaC Security Scan with Trivi
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
     steps:
       - name: Checkout repository
-
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v4
       - name: Install Trivy
-
         run: |
-
           wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
-
           echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -cs) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
-
           sudo apt-get update && sudo apt-get install -yq trivy
-
   build:
     name: IaC Scan
-
     runs-on: ubuntu-20.04
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-
+        uses: actions/checkout@v4
       - name: Run Trivy vulnerability scanner in fs mode
         uses: aquasecurity/trivy-action@master
         with:
