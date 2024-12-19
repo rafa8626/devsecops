@@ -1,22 +1,21 @@
 provider "aws" {
-  region = "us-east-2"
-}
-
-resource "aws_s3_bucket" "rafa-test1" {
-  bucket        = "rafa-tf-bucket-1234567898"
-  force_destroy = true
+  region = "us-east-1"
 }
 
 terraform {
   backend "s3" {
-    bucket = "rafa-tf-bucket-1234567898"
+    bucket = "test-tf-bucket-98765432112345"
     key    = "global/s3/terraform.tfstate"
     region = "us-east-1"
   }
 }
 
-resource "aws_instance" "test-instance1" {
-  ami           = "ami-0903ff18cc3c8e099"
+resource "aws_s3_bucket" "tf_test" {
+  bucket = "test-tf-bucket-98765432112345"
+}
+
+resource "aws_instance" "test_instance" {
+  ami           = "ami-01816d07b1128cd2d"
   instance_type = "t2.micro"
   tags = {
     Name = "rafa-test-instance-${random_id.bucket_prefix.hex}"
