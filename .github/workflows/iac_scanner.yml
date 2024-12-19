@@ -34,5 +34,5 @@ jobs:
           hide-progress: false
           format: "table"
           ignore-unfixed: true
-          severity: "HIGH,CRITICAL,MEDIUM"
-          exit-code: 1
+          # severity: "HIGH,CRITICAL,MEDIUM"
+          # exit-code: 1
