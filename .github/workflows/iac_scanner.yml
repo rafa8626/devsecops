@@ -9,8 +9,11 @@ jobs:
   deploy-and-scan:
     name: Run IaC Security Scan with Trivi
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
+      security-events: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
