@@ -1,4 +1,4 @@
-name: SCA Scan
+name: SCA Dcker Hub Image Scanning
 
 on:
   push:
